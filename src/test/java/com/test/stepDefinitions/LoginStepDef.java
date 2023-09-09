@@ -16,6 +16,7 @@ import com.test.utilities.ExcelRead;
 
 import cucumber.api.DataTable;
 import dev.failsafe.internal.util.Assert;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -30,37 +31,43 @@ public class LoginStepDef {
 
 	@Before
 	public void beforeHook() {
+		configReader = new ConfigFileReader();
+		excelRead = new ExcelRead();
+		System.out.println("geco path:" + configReader.readProperty("gecodriverpath"));
 		System.setProperty("webdriver.gecko.driver",
-				System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\geckodriver.exe");
+				System.getProperty("user.dir") + configReader.readProperty("gecodriverpath"));
 		driver = new FirefoxDriver();
+		loginPage = new LoginPage(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		configReader = new ConfigFileReader();
-		loginPage = new LoginPage(driver);
-		excelRead = new ExcelRead();
 	}
 
 	@Given("^User is on swag home page$")
 	public void user_is_swag_home_page() {
 
 		driver.get(configReader.readProperty("url"));
-		System.out.println("page title:"+driver.getTitle());
-		org.testng.Assert.assertEquals(driver.getTitle().contains("Test Login"), true,"User is not in the home page...!");
+		System.out.println("page title:" + driver.getTitle());
+		org.testng.Assert.assertEquals(driver.getTitle().contains("Test Login"), true,
+				"User is not in the home page...!");
 	}
 
 	@When("^User enter (.*) and (.*)$")
-	public void user_enter_username_and_password(String userName,String passWord) throws IOException {
-		//loginPage.login("standard_user", "standard_user");
-		//Reading test data from excel by column name 
-		//System.out.println("user name:"+excelRead.getCellValue(0, "UserName"));
-		//System.out.println("password:"+excelRead.getCellValue(0, "PassWord"));
+	public void user_enter_username_and_password(String userName, String passWord) throws IOException {
+		// loginPage.login("standard_user", "standard_user");
+		// Reading test data from excel by column name
+		// System.out.println("user name:"+excelRead.getCellValue(0, "UserName"));
+		// System.out.println("password:"+excelRead.getCellValue(0, "PassWord"));
 		loginPage.login(userName, passWord);
-		
 	}
 
 	@Then("^Validate login$")
 	public void validate_login() {
-		org.testng.Assert.assertEquals(driver.getTitle().contains("Logged In Successfully"), true,"User is not logged into the application...!");
-		}
+		org.testng.Assert.assertEquals(driver.getTitle().contains("Logged In Successfully"), true,
+				"User is not logged into the application...!");
+	}
 
+	@After
+	public void afterHook() {
+		driver.close();
+	}
 }

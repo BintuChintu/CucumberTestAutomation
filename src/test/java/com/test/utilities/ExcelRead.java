@@ -17,7 +17,7 @@ public class ExcelRead {
 	public String getCellValue(int rowNum, String columnName) throws IOException {
 		int columnNumber = 0;
 		FileInputStream fileInputStream = new FileInputStream(
-				new File(System.getProperty("user.dir") + "\\src\\test\\java\\TestData\\testdata.xls"));
+				new File(System.getProperty("user.dir") + new ConfigFileReader().readProperty("testdatapath") ));
 		workBook = new HSSFWorkbook(fileInputStream);
 		sheet = workBook.getSheet("studentlist");
 		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();

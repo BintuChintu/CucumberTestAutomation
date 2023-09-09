@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.13.0</version>
+			<version>7.9.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -97,19 +97,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports</artifactId>
-			<version>3.1.2</version>
-		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
-
-		<dependency>
 			<groupId>tech.grasshopper</groupId>
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
-			<version>1.9.2</version>
+			<version>1.7.0</version>
 		</dependency>
-		
+
+
 	</dependencies>
 
 	<build>

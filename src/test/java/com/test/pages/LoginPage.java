@@ -13,15 +13,15 @@ WebDriver driver;
 	WebElement username;
 	
 	@FindBy(id="password")
-	WebElement passWord;
+	WebElement pwd;
 	
 	@FindBy(id="submit")
 	WebElement login;
 	
-	public void login(String userName,String password)
+	public void login(String userName,String passWord)
 	{
 		username.sendKeys(userName);
-		passWord.sendKeys(password);
+		pwd.sendKeys(passWord);
 		login.click();
 	}
 	

@@ -12,9 +12,9 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-	features = "src/test/java/com/test/features",
+	features = "src/test/resources/features/LoginTest.feature",
 	glue= "com.test.stepDefinitions",
-	plugin = {"html:reports/cucumber-report.html","json:reports/cucumber-report.json"},
+	plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
 	monochrome = true,
 	dryRun = false
 	)

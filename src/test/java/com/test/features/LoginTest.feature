@@ -1,17 +1,17 @@
 #author : RaviKumar Mogulluru
 
-Feature: Validate login 
-
+#Feature: Validate login 
+#
 #Background: Background test
 #Given test the background keyword
-
-Scenario Outline:: Validate login
-	Given User is on swag home page
-	When User enter <userName> and <password>
-	Then Validate login
-	Examples:
-  |     userName   |   password    |
-	|     student    | Password123  |
+#
+#Scenario Outline:: Validate login
+#	Given User is on swag home page
+#	When User enter <userName> and <password>
+#	Then Validate login
+#	Examples:
+  #|     userName   |   password    |
+#	|     student    | Password123  |
 
 #@smoke
 #Scenario: I want to test test1
