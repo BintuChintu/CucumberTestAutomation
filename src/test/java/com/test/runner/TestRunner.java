@@ -15,6 +15,7 @@ import io.cucumber.junit.CucumberOptions;
 	features = "src/test/resources/features/LoginTest.feature",
 	glue= "com.test.stepDefinitions",
 	plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+	tags = "@sanity",
 	monochrome = true,
 	dryRun = false
 	)

@@ -3,8 +3,9 @@
 Feature: Validate login 
 
 #Background: Background test
-#Given test the background keyword
+#Given Test Allocation Launch
 
+@sanity
 Scenario Outline:: Validate login
 	Given User is on swag home page
 	When User enter <userName> and <password>
