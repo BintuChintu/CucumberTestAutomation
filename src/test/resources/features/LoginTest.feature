@@ -14,6 +14,18 @@ Scenario Outline:: Validate login
   |     userName   |   password   |
 	|     student    | Password123  |
 
+# Data table implementation
+@sanity
+	Scenario: Validate Parameterisation
+	Given User is on swag home page
+	When User enters login credentials
+# user credentials without column names	
+#	| student    | Password123  |
+# user credentials with column names
+		| username   | password  |
+		| student    | Password123  |
+	Then Validate login	
+
 #@smoke
 #Scenario: I want to test test1
 #	Given some other precondition
@@ -37,10 +49,3 @@ Scenario Outline:: Validate login
 #	|     userName   |   password    |
 #	| standard_user  | secret_sauce  |
 	
-#@regression
-#	Scenario Outline: Validate Parameterisation
-#	Given User is swag home page
-#	When User enters login credentials
-#	| username         | password      |
-#	| standard_user    | secret_sauce  |
-#	Then Validate login	

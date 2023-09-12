@@ -1,15 +1,19 @@
 package com.test.stepDefinitions;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.test.pages.LoginPage;
 import com.test.utilities.ConfigFileReader;
 import com.test.utilities.ExcelRead;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -27,12 +31,26 @@ public class LoginStepDef {
 	ExcelRead excelRead;
 	 private static final Logger log = LogManager.getLogger(LoginStepDef.class);
 	@Before
-	public void beforeHook() {
+	public void beforeHook() throws Exception {
 		configReader = new ConfigFileReader();
 		excelRead = new ExcelRead(); 
+		String browserName = configReader.readProperty("browserName");
+		if(browserName.equalsIgnoreCase("firefox"))
+		{
 		System.setProperty("webdriver.gecko.driver",
 				System.getProperty("user.dir") + configReader.readProperty("gecodriverpath"));
 		driver = new FirefoxDriver();
+		}
+		else if(browserName.equalsIgnoreCase("chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver",
+					System.getProperty("user.dir") + configReader.readProperty("chromedriverpath"));
+			driver = new ChromeDriver();
+		}
+		else
+		{
+			throw new Exception("Choose correct browser to run the test scripts");
+		}
 		loginPage = new LoginPage(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -69,6 +87,18 @@ public class LoginStepDef {
 		org.testng.Assert.assertEquals(driver.getTitle().contains("Logged In Successfully"), true,
 				"User is not logged into the application...!");
 		log.info("User validated login successfully....!");
+	}
+	
+	//data table implementation
+	
+	@When("User enters login credentials")
+	public void user_enters_login_credentials(DataTable userCredentials) {	    
+//By using List		
+//	  List<String> data = userCredentials.row(0);
+//	  loginPage.login(data.get(0), data.get(1));
+//List<Map<K,V>>		
+		List<Map<String,String>> data = userCredentials.asMaps(String.class,String.class);
+		loginPage.login(data.get(0).get("username"), data.get(0).get("password"));
 	}
 
 	@After
