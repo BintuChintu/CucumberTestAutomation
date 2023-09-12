@@ -31,13 +31,13 @@
 		<logger name="com" level="TRACE">
 			<AppenderRef ref="Console" />
 		</logger>
-		<logger name="com.journaldev" level="TRACE">
+		<logger name="com.test" level="TRACE">
 			<AppenderRef ref="Console" />
 		</logger>
 		<logger name="net" level="ERROR">
 			<AppenderRef ref="Console" />
 		</logger>
-		<logger name="net.journaldev" level="ERROR">
+		<logger name="net.test" level="ERROR">
 			<AppenderRef ref="Console" />
 		</logger>
 	</Loggers>

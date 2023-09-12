@@ -1,16 +1,13 @@
+/**
+ * 
+ * @author: RaviKumar Mogulluru
+ *	
+ */
 package com.test.runner;
 
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
 
-import org.junit.runner.RunWith;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Listeners;
-
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-
-
-
-@RunWith(Cucumber.class)
 @CucumberOptions(
 	features = "src/test/resources/features/LoginTest.feature",
 	glue= "com.test.stepDefinitions",
@@ -20,6 +17,6 @@ import io.cucumber.junit.CucumberOptions;
 	dryRun = false
 	)
 
-public class TestRunner {
-	
+public class TestRunner extends AbstractTestNGCucumberTests  {
+
 }

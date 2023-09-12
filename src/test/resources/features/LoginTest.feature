@@ -11,7 +11,7 @@ Scenario Outline:: Validate login
 	When User enter <userName> and <password>
 	Then Validate login
 	Examples:
-  |     userName   |   password    |
+  |     userName   |   password   |
 	|     student    | Password123  |
 
 #@smoke
