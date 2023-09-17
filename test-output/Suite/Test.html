@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Sep 12 06:50:47 IST 2023</td>
+<td>Started on:</td><td>Sun Sep 17 16:27:59 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (23 ms)</td>
+<tr><td>Total time:</td><td>27 seconds (27667 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,5 +67,34 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.test.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.test.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate google search with keyword", "Amazon product search"</td>
+<td><div><pre>java.lang.NumberFormatException: For input string: &quot;Get it by&quot;
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:651)
+	at com.test.pages.AmazonTestPage.print5RatingItemsFromFilteredList(AmazonTestPage.java:140)
+	at com.test.stepDefinitions.AmazonTestStepDef.print5RatingItems(AmazonTestStepDef.java:131)
+	at ✽.Print all the products whose rating is 5.0(file:///C:/Users/MY%20PC/TestProjects/CucumberTestAutomation/src/test/resources/features/AmazonTest.feature:23)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2077462509", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2077462509'><pre>java.lang.NumberFormatException: For input string: &quot;Get it by&quot;
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:651)
+	at com.test.pages.AmazonTestPage.print5RatingItemsFromFilteredList(AmazonTestPage.java:140)
+	at com.test.stepDefinitions.AmazonTestStepDef.print5RatingItems(AmazonTestStepDef.java:131)
+	at ✽.Print all the products whose rating is 5.0(file:///C:/Users/MY%20PC/TestProjects/CucumberTestAutomation/src/test/resources/features/AmazonTest.feature:23)
+</pre></div></td>
+<td>25</td>
+<td>com.test.runner.TestRunner@ec2cc4</td></tr>
+</table><p>
 </body>
 </html>

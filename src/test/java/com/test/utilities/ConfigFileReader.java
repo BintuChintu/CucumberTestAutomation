@@ -1,3 +1,6 @@
+/*
+ * *Author : RaviKumar Mogulluru
+ */
 package com.test.utilities;
 
 import java.io.BufferedReader;
@@ -6,17 +9,21 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.test.pages.AmazonTestPage;
+
 public class ConfigFileReader {
 	
 	private Properties properties;
 	private final String propertyFilePath= "\\src\\test\\resources\\config\\config.properties";
-
+	private static final Logger log = LogManager.getLogger(ConfigFileReader.class);
 	
 	public ConfigFileReader(){
-		//BufferedReader reader;
+		
 		FileReader reader;
 		try {
-			//reader = new BufferedReader(new FileReader(System.getProperty("user.dir")+propertyFilePath));
 			reader = new FileReader(System.getProperty("user.dir")+propertyFilePath);
 			properties = new Properties();
 			try {
@@ -30,18 +37,6 @@ public class ConfigFileReader {
 			throw new RuntimeException("Config.properties not found at " + propertyFilePath);
 		}		
 	}
-	
-//	public String getDriverPath(){
-//		String driverPath = properties.getProperty("driverPath");
-//		if(driverPath!= null) return driverPath;
-//		else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");		
-//	}
-//	
-//	public long getImplicitlyWait() {		
-//		String implicitlyWait = properties.getProperty("implicitlyWait");
-//		if(implicitlyWait != null) return Long.parseLong(implicitlyWait);
-//		else throw new RuntimeException("implicitlyWait not specified in the Configuration.properties file.");		
-//	}
 	
 	public String readProperty(String property) {
 		String value = properties.getProperty(property);
